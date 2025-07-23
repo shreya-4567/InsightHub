@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>InsightHub – Stack your proof</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="/static/style.css"/>
+  <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css"/>
+</head>
+<body class="bg-gray-900 text-white font-sans">
+
+  <main class="max-w-5xl mx-auto px-4 py-10">
+    <!-- 🔥 Heading -->
+    <header class="text-center mb-12">
+      <h1 class="text-5xl font-extrabold text-cyan-400 mb-2 animate-bounce glow-text">SATIInsight</h1>
+      <p class="text-xl text-white italic">“Stack your proof. Shine your worth.” ✨</p>
+    </header>
+
+    <!-- 📝 About Project -->
+    <section class="bg-gradient-to-r from-cyan-800 to-blue-900 p-8 rounded-2xl shadow-2xl mb-10">
+      <h2 class="text-4xl font-bold text-cyan-200 text-center mb-6 glow-text">About the Project</h2>
+      <p class="text-lg text-center mb-6">
+        🚀 <strong>FluxWave Hackathon 2025</strong> ke liye banaya gaya ek platform – jahan SATI ke students 
+        apne **real proofs** se rating paayenge!
+      </p>
+      <ul class="list-disc text-white pl-6 space-y-2">
+        <li>✅ Proof-based skills like GitHub, LinkedIn, Blogs, CP profiles count karenge</li>
+        <li>✅ GPT AI auto-analysis karega & weekly update dega</li>
+        <li>✅ Year-wise & Skill-wise filtering available</li>
+      </ul>
+      <div class="mt-6 text-center text-white">
+        <h3 class="text-2xl text-cyan-100 mb-2">🎨 Bonus Section:</h3>
+        <p>Creative skills like singing, dancing, etc. bhi proof ke saath show kar sakte ho</p>
+      </div>
+      <p class="mt-4 text-center font-semibold">🎯 Goal: Fake skills hatao, real proof ke sath apni personality & passion dikhao 🚀</p>
+    </section>
+
+    <!-- 🧑‍💻 Create Your Profile -->
+<section class="bg-gradient-to-r from-sky-800 to-indigo-900 p-8 rounded-2xl shadow-xl mb-10">
+  <h2 class="text-3xl text-sky-200 font-bold text-center mb-6 glow-text">Create Your Profile 🧑‍💻</h2>
+  
+  <div class="grid md:grid-cols-2 gap-6">
+    <input type="text" id="fullName" placeholder="Full Name"
+           class="p-3 rounded bg-gray-900 border border-sky-400 text-white placeholder:text-gray-400"/>
+
+    <input type="email" id="email" placeholder="Email Address"
+           class="p-3 rounded bg-gray-900 border border-sky-400 text-white placeholder:text-gray-400"/>
+
+    <input type="text" id="branch" placeholder="Branch (e.g., CSE, ECE)"
+           class="p-3 rounded bg-gray-900 border border-sky-400 text-white placeholder:text-gray-400"/>
+
+    <input type="text" id="year" placeholder="Year (1st, 2nd, etc.)"
+           class="p-3 rounded bg-gray-900 border border-sky-400 text-white placeholder:text-gray-400"/>
+
+    <textarea id="skills" rows="3" placeholder="Your Skills (comma separated)" 
+              class="md:col-span-2 p-3 rounded bg-gray-900 border border-sky-400 text-white placeholder:text-gray-400"></textarea>
+  </div>
+
+  <button onclick="createProfile()" 
+          class="mt-6 bg-sky-500 px-6 py-2 rounded hover:bg-sky-600 transition w-full text-white">
+    Save Profile
+  </button>
+
+  <p id="profileMsg" class="mt-4 text-green-400 text-center"></p>
+</section>
+
+    <!-- 🔍 AI Rating -->
+    <section class="bg-gray-800 p-8 rounded-2xl shadow-xl mb-10">
+      <h2 class="text-3xl text-cyan-300 font-bold text-center mb-6">Get your AI Skill Rating 🚀</h2>
+      <input id="github" type="text" placeholder="GitHub username" class="w-full p-3 rounded bg-gray-900 border border-cyan-400 mb-4"/>
+      <input id="linkedin" type="text" placeholder="LinkedIn profile link" class="w-full p-3 rounded bg-gray-900 border border-cyan-400 mb-4"/>
+      <button onclick="analyzeProfile()" class="bg-cyan-500 px-6 py-2 rounded hover:bg-cyan-600 transition w-full">Get Rating</button>
+      <p id="result" class="mt-4 text-green-400 text-center"></p>
+      <p id="stars" class="text-yellow-400 text-center text-2xl mt-2"></p>
+    </section>
+
+    <!-- 📄 Upload Resume -->
+    <section class="bg-gray-800 p-8 rounded-2xl shadow-xl mb-10">
+      <h2 class="text-3xl text-cyan-300 font-bold text-center mb-6">Upload Resume (PDF)</h2>
+      <input type="file" id="resume" accept=".pdf" class="mb-4 block w-full"/>
+      <button onclick="uploadResume()" class="bg-green-500 px-6 py-2 rounded hover:bg-green-600 transition w-full">Upload & Analyze</button>
+      <p id="resumeResult" class="mt-4 text-yellow-400 text-center"></p>
+    </section>
+
+    <!-- 🎨 Upload Creative Proof (Singing / Dancing / Other Talent) -->
+<section class="bg-gradient-to-r from-purple-800 to-indigo-900 p-8 rounded-2xl shadow-xl mb-10">
+  <h2 class="text-3xl text-purple-200 font-bold text-center mb-6 glow-text">Upload Creative Skill Proofs 🎤💃📸</h2>
+  <p class="text-center mb-6 text-white">
+    Singing, dancing, modelling, photography, etc. mein agar interest hai toh uska video link ya portfolio yahan submit karo.
+  </p>
+  <input type="text" id="creativeLink" placeholder="Enter YouTube, Instagram, or Drive Link" 
+         class="w-full p-3 rounded bg-gray-900 border border-purple-400 mb-4 text-white placeholder:text-gray-400"/>
+
+  <button onclick="submitCreativeProof()" 
+          class="bg-purple-500 px-6 py-2 rounded hover:bg-purple-600 transition w-full text-white">
+    Submit Creative Link
+  </button>
+
+  <p id="creativeResult" class="mt-4 text-green-400 text-center"></p>
+</section>
+
+    <!-- ⭐ Testimonials -->
+    <section class="mb-10">
+      <h2 class="text-3xl text-cyan-300 font-bold text-center mb-6">Testimonials</h2>
+      <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide p-6 bg-gray-800 rounded-xl shadow-lg text-center">"Best platform for students! ⭐⭐⭐⭐⭐"</div>
+          <div class="swiper-slide p-6 bg-gray-800 rounded-xl shadow-lg text-center">"Loved the AI analysis 🚀"</div>
+          <div class="swiper-slide p-6 bg-gray-800 rounded-xl shadow-lg text-center">"My resume got a 4.8 rating!"</div>
+          <div class="swiper-slide p-6 bg-gray-800 rounded-xl shadow-lg text-center">"Perfect for placements 🎯"</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 🏆 Top 10 Students -->
+    <section>
+      <h2 class="text-3xl text-cyan-300 font-bold text-center mb-6">Top 10 Students</h2>
+      <div class="swiper mySwiper2">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide p-6 bg-gray-800 rounded-xl shadow-lg text-center">🚀 <strong>Amit</strong> - ⭐⭐⭐⭐</div>
+          <div class="swiper-slide p-6 bg-gray-800 rounded-xl shadow-lg text-center">🔥 <strong>Sakshi</strong> - ⭐⭐⭐⭐⭐</div>
+          <div class="swiper-slide p-6 bg-gray-800 rounded-xl shadow-lg text-center">💻 <strong>Pratik</strong> - ⭐⭐⭐⭐</div>
+          <div class="swiper-slide p-6 bg-gray-800 rounded-xl shadow-lg text-center">🎯 <strong>Neha</strong> - ⭐⭐⭐⭐⭐</div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+  <script>
+    new Swiper(".mySwiper", { slidesPerView: 1, loop: true, autoplay: { delay: 2000 }});
+    new Swiper(".mySwiper2", { slidesPerView: 3, spaceBetween: 30, loop: true, autoplay: { delay: 1500 }});
+    
+    async function createProfile() {
+  const fullName = document.getElementById('fullName').value;
+  const email = document.getElementById('email').value;
+  const branch = document.getElementById('branch').value;
+  const year = document.getElementById('year').value;
+  const skills = document.getElementById('skills').value;
+
+  if (!fullName || !email || !branch || !year) {
+    document.getElementById('profileMsg').innerText = "❌ Please fill all required fields!";
+    return;
+  }
+
+  const res = await fetch("/create_profile", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ fullName, email, branch, year, skills })
+  });
+
+  const data = await res.json();
+  document.getElementById('profileMsg').innerText = data.message || "✅ Profile created!";
+}
+
+    async function analyzeProfile() {
+      const github = document.getElementById('github').value;
+      const linkedin = document.getElementById('linkedin').value;
+
+      document.getElementById('result').innerText = "⌛ Analyzing your profile...";
+      document.getElementById('stars').innerText = "";
+
+      const response = await fetch("http://localhost:5000/analyze_profile", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ github, linkedin })
+      });
+
+      const data = await response.json();
+      const msg = data.message;
+      document.getElementById('result').innerText = msg;
+
+      const match = msg.match(/Rating:\s*([\d.]+)\s*\/\s*5/i);
+      if (match) {
+        const rating = parseFloat(match[1]);
+        showStars(rating);
+      }
+    }
+
+    function showStars(rating) {
+      const stars = Math.round(rating);
+      document.getElementById("stars").innerText = "⭐".repeat(stars) + "☆".repeat(5 - stars) + ` (${rating} / 5)`;
+    }
+
+    async function uploadResume() {
+      const fileInput = document.getElementById('resume');
+      const formData = new FormData();
+      formData.append('resume', fileInput.files[0]);
+      const res = await fetch('/upload_resume', {method: 'POST', body: formData});
+      const data = await res.json();
+      document.getElementById('resumeResult').innerText = "Resume Rating: " + data.rating;
+    }
+  </script>
+
+<script>
+  async function submitCreativeProof() {
+    const link = document.getElementById('creativeLink').value;
+    if (!link) {
+      document.getElementById('creativeResult').innerText = "❌ Please enter a valid link!";
+      return;
+    }
+
+    // POST to backend (replace with your endpoint)
+    const response = await fetch("/upload_creative", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ link })
+    });
+
+    const data = await response.json();
+    document.getElementById('creativeResult').innerText = data.message || "✅ Proof submitted!";
+  }
+</script>
+
+  <!-- Glow Style -->
+  <style>
+    .glow-text {
+      text-shadow: 0 0 8px #22d3ee, 0 0 16px #0ea5e9;
+    }
+  </style>
+
+</body>
+</html>
